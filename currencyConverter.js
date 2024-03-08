@@ -204,7 +204,17 @@ form.addEventListener("submit",async (event)=>{
         let formCur=formCurrency.value.toLowerCase();
         let convRate=INR[formCur][toCur];
         let inpVal=document.querySelector("input").value;
-        document.querySelector("input").value=inpVal*convRate;
+        let res=inpVal*convRate;
+        let p1 = document.querySelector(".para")
+
+        if (p1) {
+            p1.remove();
+        }
+        let p=document.createElement("p");
+        let textnode=document.createTextNode(`${inpVal} is ${res}`);
+        p.append(textnode)
+        p.className="para"
+        document.querySelector("button").parentNode.insertBefore(p,document.querySelector("button"));
 
     }
     catch(error){
